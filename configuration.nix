@@ -138,9 +138,65 @@
     enable = true;
     pd.enable = true;
     settings = {
+      CPU_SCALING_GOVERNOR_ON_AC = "performance";
       CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+
+      # Intel Turbo Boost controls
+      CPU_BOOST_ON_AC = 1;
+      CPU_BOOST_ON_BAT = 0;
+
+      # Energy Performance Preference (EPP)
+      CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
+      CPU_ENERGY_PERF_POLICY_ON_BAT = "balance_power"; # Dynamic balance for battery
+
+      # Adjust frequency limits for balance_power to work effectively
+      CPU_MIN_PERF_ON_BAT = 0;
+      CPU_MAX_PERF_ON_BAT = 60; # Increased from 30 to give the CPU room to scale up
+
+      # Power savings for disks and audio
+      SATA_LINKPWR_ON_BAT = "med_power_with_dipm";
+      SOUND_POWER_SAVE_ON_BAT = 1;
     };
   };
+
+  # Brighness auto change
+
+  # Native systemd services targeting power status events
+  systemd.services.brightness-on-ac = {
+    description = "Set screen brightness to 80% when on AC power";
+    wantedBy = [ "multi-user.target" ];
+    after = [ "systemd-udevd.service" ];
+    unitConfig.ConditionPathExists = "/sys/class/power_supply/AC/online";
+    script = ''
+      if [ "$(${pkgs.coreutils}/bin/cat /sys/class/power_supply/AC/online)" = "1" ]; then
+        ${pkgs.brightnessctl}/bin/brightnessctl set 80%
+      fi
+    '';
+  };
+
+  systemd.services.brightness-on-bat = {
+    description = "Set screen brightness to 30% when on Battery power";
+    wantedBy = [ "multi-user.target" ];
+    after = [ "systemd-udevd.service" ];
+    unitConfig.ConditionPathExists = "/sys/class/power_supply/AC/online";
+    script = ''
+      if [ "$(${pkgs.coreutils}/bin/cat /sys/class/power_supply/AC/online)" = "0" ]; then
+        ${pkgs.brightnessctl}/bin/brightnessctl set 30%
+      fi
+    '';
+  };
+
+  # Hook the systemd actions securely to hardware state changes
+  services.udev.packages = [
+    (pkgs.writeTextFile {
+      name = "brightness-power-rules";
+      destination = "/etc/udev/rules.d/99-brightness-power.rules";
+      text = ''
+        ACTION=="change", SUBSYSTEM=="power_supply", ATTR{online}=="1", RUN+="${pkgs.systemd}/bin/systemctl start brightness-on-ac.service"
+        ACTION=="change", SUBSYSTEM=="power_supply", ATTR{online}=="0", RUN+="${pkgs.systemd}/bin/systemctl start brightness-on-bat.service"
+      '';
+    })
+  ];
   # Home row mode
   services.keyd = {
     enable = true;
