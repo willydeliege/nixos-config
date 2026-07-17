@@ -186,11 +186,6 @@
     ];
     packages = with pkgs; [
       #  thunderbird
-      btop
-      gh
-      calibre
-      freetube
-      unzip
     ];
   };
 
