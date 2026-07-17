@@ -10,10 +10,11 @@
 
   home.packages = with pkgs; [
     neovim
-    btop
-    freetube
     unzip
   ];
+  programs.freetube = {
+    enable = true;
+  };
   programs.gh.enable = true;
   programs.git.enable = true;
   programs.btop.enable = true;
