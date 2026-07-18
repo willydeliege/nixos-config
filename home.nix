@@ -10,6 +10,7 @@
 
   home.packages = with pkgs; [
     neovim
+    libreoffice-fresh
     unzip
   ];
   programs.freetube = {
