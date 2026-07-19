@@ -412,7 +412,16 @@
     emscripten
     pkg-config
     openssl
+    # useful for btop to give gpu's info
+    btop
   ];
+
+  security.wrappers.btop = {
+    owner = "root";
+    group = "root";
+    capabilities = "cap_perfmon+ep";
+    source = "${pkgs.btop}/bin/btop";
+  };
   # Enable font directory and packages
   fonts = {
     packages = with pkgs; [
