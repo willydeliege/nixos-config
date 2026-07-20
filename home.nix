@@ -13,6 +13,7 @@
     libreoffice-fresh
     unzip
   ];
+  programs.chromium.enable = true;
   programs.freetube = {
     enable = true;
     settings = {
