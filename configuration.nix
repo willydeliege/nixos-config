@@ -133,6 +133,13 @@
   # Enable CUPS to print documents.
   services.printing.enable = false;
 
+  services.upower = {
+    enable = true;
+    percentageLow = 20;
+    percentageCritical = 5;
+    percentageAction = 3;
+    criticalPowerAction = "HybridSleep"; # Options: PowerOff, Hibernate, HybridSleep, Suspend, Ignore
+  };
   # Power managemnt
   services.tlp = {
     enable = true;
@@ -285,6 +292,7 @@
     ];
     packages = with pkgs; [
       #  thunderbird
+      fastfetch
     ];
   };
 
@@ -339,6 +347,7 @@
     bat
     # Terminal
     foot
+    alacritty
     # Launcher
     rofi
     # Status bar
@@ -379,8 +388,6 @@
     kdePackages.qt6ct
     # Vol light on screen
     swayosd
-    #  Browser
-    brave
     # cli tools
     eza
     fd
@@ -395,6 +402,7 @@
     lazygit
     # Multiplexer
     tmux
+    zellij
     sesh
     # needed by noviM
     nil
