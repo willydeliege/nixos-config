@@ -14,13 +14,9 @@
   nix.gc = {
     automatic = true;
     dates = "weekly";
-    options = "--delete-older-than +10";
+    options = "--delete-older-than +5";
   };
   nix.settings.auto-optimise-store = true; # Fusionne les fichiers identiques pour gagner de la place
-  imports = [
-    # Include the results of the hardware scan.
-    ./hardware-configuration.nix
-  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
