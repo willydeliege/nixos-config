@@ -1,13 +1,10 @@
 {
-  config,
-  lib,
-  stdenv,
   pkgs,
   ...
 }:
 
 {
-
+  systemd.targets.hybrid-sleep.enable = true;
   services.upower = {
     enable = true;
     percentageLow = 20;
