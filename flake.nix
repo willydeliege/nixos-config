@@ -27,6 +27,7 @@
           modules = [
             ./hardware-configuration.nix
             ./configuration.nix
+            ./system/power-management.nix
             home-manager.nixosModules.home-manager
 
             {
