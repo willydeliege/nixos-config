@@ -63,7 +63,7 @@
   programs.sway = {
     enable = true;
 
-    package = pkgs.swayfx;
+    package = pkgs.sway;
     # Enables GTK integration (portals, environment variables, etc.)
     wrapperFeatures.gtk = true;
   };
