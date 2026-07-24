@@ -74,6 +74,7 @@
       useSponsorBlock = true;
       region = "FR";
       defaultQuality = "360";
+      checkForUpdates = false;
     };
   };
   programs.gh.enable = true;
