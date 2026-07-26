@@ -28,6 +28,17 @@
             ./hardware-configuration.nix
             ./configuration.nix
             ./modules/power-management.nix
+            ./modules/audio.nix
+            ./modules/documentation.nix
+            ./modules/network.nix
+            ./modules/user-shell.nix
+            ./modules/neovim.nix
+            ./modules/keyboard.nix
+            ./modules/desktop/sway.nix
+            ./modules/desktop/fonts.nix
+            ./modules/desktop/login-manager.nix
+            ./modules/desktop/graphics.nix
+            ./modules/desktop/theme.nix
 
             home-manager.nixosModules.home-manager
             {
