@@ -12,6 +12,10 @@
     neovim
     libreoffice-fresh
     unzip
+    imagemagick
+    ghostscript
+    mermaid-cli
+    tectonic
   ];
   home.shell.enableZshIntegration = true;
   programs.tmux = {
