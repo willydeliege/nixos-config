@@ -180,7 +180,7 @@
   };
   programs.chromium = {
     enable = true;
-    package = pkgs.chromium;
+    package = pkgs.ungoogled-chromium;
   };
   programs.freetube = {
     enable = true;
