@@ -5,6 +5,8 @@
 { pkgs, ... }:
 
 {
+  # NOTE: set to true after finishing config
+  security.sudo.wheelNeedsPassword = false;
   # Activer les fonctionnalités expérimentales (Flakes et commandes Nix modernes)
   nix.settings.experimental-features = [
     "nix-command"
