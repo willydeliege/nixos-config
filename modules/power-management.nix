@@ -15,6 +15,7 @@
   # Power managemnt
   services.tlp = {
     enable = true;
+    # Power profile daemon
     pd.enable = true;
     settings = {
       TLP_AUTO_SWITCH = 2;
@@ -24,7 +25,7 @@
 
       # Intel P-state energy/performance policy
       CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
-      CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
+      CPU_ENERGY_PERF_POLICY_ON_BAT = "balance_power";
 
       # Turbo Boost
       CPU_BOOST_ON_AC = 1;
