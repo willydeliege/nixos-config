@@ -13,7 +13,8 @@
     libreoffice-fresh
     unzip
   ];
-  programs.alacritty = {
+  home.shell.enableZshIntegration = true;
+  programs.tmux = {
     enable = true;
 
     # Raccourcis et options de base
@@ -133,49 +134,33 @@
     };
 
     settings = {
-      window.opacity = 0.95; # Optionnel : légère transparence
-      env.TERM = "xterm-256color"; # Informe le système des capacités du terminal
-      font = {
-        size = 13.0;
-        normal = {
-          family = "FiraCode Nerd Font";
-          style = "Regular";
-        };
-        bold = {
-          family = "FiraCode Nerd Font";
-          style = "Bold";
-        };
-        italic = {
-          family = "FiraCode Nerd Font";
-          style = "Italic";
-        };
-      };
-      colors = {
-        primary = {
-          background = "#000000";
-          foreground = "#ffffff";
-        };
-        normal = {
-          black = "0x7a828e";
-          red = "0xff9492";
-          green = "0x26cd4d";
-          yellow = "0xf0b72f";
-          blue = "0x71b7ff";
-          magenta = "0xcb9eff";
-          cyan = "0x39c5cf";
-          white = "0xd9dee3";
-        };
-        bright = {
-          black = "0x9ea7b3";
-          red = "0xffb1af";
-          green = "0x4ae168";
-          yellow = "0xf7c843";
-          blue = "0x91cbff";
-          magenta = "0xcb9eff";
-          cyan = "0x39c5cf";
-          white = "0xd9dee3";
-        };
-      };
+      # Configuration de la fenêtre et de l'environnement
+      background_opacity = "0.95";
+      term = "xterm-256color";
+
+      # Palette de couleurs (Primaire)
+      background = "#000000";
+      foreground = "#ffffff";
+
+      # Couleurs normales (ansi)
+      color0 = "#7a828e"; # black
+      color1 = "#ff9492"; # red
+      color2 = "#26cd4d"; # green
+      color3 = "#f0b72f"; # yellow
+      color4 = "#71b7ff"; # blue
+      color5 = "#cb9eff"; # magenta
+      color6 = "#39c5cf"; # cyan
+      color7 = "#d9dee3"; # white
+
+      # Couleurs brillantes (brights)
+      color8 = "#9ea7b3"; # black
+      color9 = "#ffb1af"; # red
+      color10 = "#4ae168"; # green
+      color11 = "#f7c843"; # yellow
+      color12 = "#91cbff"; # blue
+      color13 = "#cb9eff"; # magenta
+      color14 = "#39c5cf"; # cyan
+      color15 = "#d9dee3"; # white
     };
   };
   programs.chromium = {
