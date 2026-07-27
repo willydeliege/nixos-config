@@ -22,7 +22,6 @@
       fastfetch
     ];
   };
-
   environment.systemPackages = with pkgs; [
     # Better less
     bat
@@ -42,11 +41,11 @@
     yazi
     lazygit
     # Multiplexer
-    tmux
     zellij
     sesh
     btop
   ];
+  programs.tmux.enable = true;
   security.wrappers.btop = {
     owner = "root";
     group = "root";
