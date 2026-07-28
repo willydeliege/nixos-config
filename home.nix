@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   home.username = "willefi";
@@ -10,7 +10,7 @@
 
   home.packages = with pkgs; [
     neovim
-    libreoffice-fresh
+    libreoffice-qt6-fresh
     unzip
     imagemagick
     ghostscript
@@ -21,7 +21,7 @@
   programs.tmux = {
     enable = true;
 
-    # Raccourcis et options de base
+    # Bases options
     mouse = true;
     keyMode = "vi";
     baseIndex = 1;
