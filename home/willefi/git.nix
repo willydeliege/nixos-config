@@ -23,4 +23,11 @@
       word-diff = true;
     };
   };
+
+  programs.gh = {
+    enable = true;
+    settings = {
+      editor = "nvim";
+    };
+  };
 }
