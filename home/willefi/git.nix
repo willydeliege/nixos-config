@@ -12,14 +12,15 @@
 
   programs.git = {
     enable = true;
-    delta = {
-      enable = true;
-      options = {
-        navigate = true;
-        line-numbers = true;
-        # Active la mise en valeur précise des caractères modifiés
-        word-diff = true;
-      };
+  };
+
+  programs.delta = {
+    enable = true;
+    enableGitIntegration = true;
+    options = {
+      navigate = true;
+      line-numbers = true;
+      word-diff = true;
     };
   };
 }
