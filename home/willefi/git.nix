@@ -24,6 +24,7 @@
     };
   };
 
+  # github-client cli
   programs.gh = {
     enable = true;
     settings = {
