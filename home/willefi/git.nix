@@ -1,6 +1,5 @@
 { pkgs, ... }:
 {
-
   programs.lazygit = {
     enable = true;
     settings = {
@@ -14,6 +13,7 @@
     enable = true;
   };
 
+  # Git diff pager
   programs.delta = {
     enable = true;
     enableGitIntegration = true;
