@@ -39,7 +39,6 @@
     jq
     # TUI
     yazi
-    lazygit
     # Multiplexer
     zellij
     sesh

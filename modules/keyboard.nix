@@ -26,15 +26,15 @@
       default = {
         settings = {
           main = {
-            a = "lettermod(meta, a, 150, 200)";
-            s = "lettermod(alt, s, 150, 200)";
-            d = "lettermod(control, d, 150, 200)";
-            f = "lettermod(shift, f, 150, 200)";
+            a = "lettermod(meta, a, 150, 280)";
+            s = "lettermod(alt, s, 150, 280)";
+            d = "lettermod(control, d, 150, 280)";
+            f = "lettermod(shift, f, 150, 280)";
 
-            j = "lettermod(shift, j, 150, 200)";
-            k = "lettermod(control, k, 150, 200)";
-            l = "lettermod(alt, l, 150, 200)";
-            ";" = "lettermod(meta, semicolon, 150, 200)";
+            j = "lettermod(shift, j, 150, 280)";
+            k = "lettermod(control, k, 150, 280)";
+            l = "lettermod(alt, l, 150, 280)";
+            ";" = "lettermod(meta, semicolon, 150, 280)";
           };
         };
       };

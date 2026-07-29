@@ -26,7 +26,6 @@
     };
   };
 
-  programs.git.enable = true;
   networking.firewall = {
     enable = true;
     allowedTCPPorts = [
