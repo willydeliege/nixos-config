@@ -14,10 +14,6 @@
     ./home/willefi/git.nix
   ];
   home.shell.enableZshIntegration = true;
-  programs.chromium = {
-    enable = true;
-    package = pkgs.ungoogled-chromium;
-  };
   programs.freetube = {
     enable = true;
     settings = {
