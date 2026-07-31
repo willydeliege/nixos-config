@@ -46,7 +46,7 @@
               home-manager.useUserPackages = true;
               home-manager.backupFileExtension = "backup";
 
-              home-manager.users.willefi = import ./home.nix;
+              home-manager.users.willefi = import ./home/home-willefi.nix;
             }
           ];
         };

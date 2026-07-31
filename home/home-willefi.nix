@@ -8,10 +8,10 @@
 
   programs.home-manager.enable = true;
   imports = [
-    ./home/willefi/packages.nix
-    ./home/willefi/tmux.nix
-    ./home/willefi/kitty.nix
-    ./home/willefi/git.nix
+    ./willefi/packages.nix
+    ./willefi/tmux.nix
+    ./willefi/kitty.nix
+    ./willefi/git.nix
   ];
   home.shell.enableZshIntegration = true;
   programs.fzf.enable = true;
