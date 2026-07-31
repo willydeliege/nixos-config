@@ -29,12 +29,10 @@
     foot
     alacritty
     # cli tools
-    eza
     fd
     fzf
     ripgrep
     stow
-    zoxide
     wget
     jq
     # TUI
@@ -44,6 +42,7 @@
     sesh
     btop
   ];
+  programs.zoxide.enable = true;
   programs.tmux.enable = true;
   security.wrappers.btop = {
     owner = "root";

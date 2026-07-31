@@ -12,6 +12,7 @@
     QT_QPA_PLATFORM = "wayland";
     # Select theme integration: "qt5ct", "qt6ct", or "kde"
     QT_QPA_PLATFORMTHEME = "xdgdesktopportal";
+    NIXOS_OZONE_WL = "1";
   };
 
   environment.systemPackages = with pkgs; [

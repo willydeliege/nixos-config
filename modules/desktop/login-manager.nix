@@ -5,7 +5,7 @@
 {
   services.greetd = {
     enable = true;
-    useTextGreeter = true;
+    useTextGreeter = true; # avoid systemd boot messages interrupt TUI.
 
     settings.default_session = {
       user = "greeter";

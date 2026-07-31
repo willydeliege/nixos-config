@@ -5,6 +5,48 @@
     enable = true;
 
     package = pkgs.sway;
+    extraPackages = with pkgs; [
+
+      # Brightness
+      brightnessctl
+      # File manager
+      thunar
+      # Network manager
+      networkmanagerapplet
+      # Useful Wayland tools
+      xdg-utils
+      # Vol light on screen
+      swayosd
+      # Eye confort
+      wlsunset
+      # Audio
+      pavucontrol
+      playerctl
+      # Bluetooth
+      blueman
+      # Launcher
+      rofi
+      # Status bar
+      waybar
+      # Autotiling
+      autotiling
+      # Notifications
+      swaynotificationcenter
+      libnotify
+      # Navigation
+      swayr
+      # Locking / idle
+      swaylock
+      swayidle
+      # Screenshots
+      grim
+      slurp
+      # Clipboard
+      wl-clipboard
+      cliphist
+
+      (python3.withPackages (ps: with ps; [ i3ipc ]))
+    ];
     # Enables GTK integration (portals, environment variables, etc.)
     wrapperFeatures.gtk = true;
   };
@@ -32,45 +74,4 @@
     ];
     config.common.default = "*"; # Force l'utilisation des portails disponibles
   };
-  environment.systemPackages = with pkgs; [
-    # Brightness
-    brightnessctl
-    # File manager
-    thunar
-    # Network manager
-    networkmanagerapplet
-    # Useful Wayland tools
-    xdg-utils
-    # Vol light on screen
-    swayosd
-    # Eye confort
-    wlsunset
-    # Audio
-    pavucontrol
-    playerctl
-    # Bluetooth
-    blueman
-    # Launcher
-    rofi
-    # Status bar
-    waybar
-    # Autotiling
-    autotiling
-    # Notifications
-    swaynotificationcenter
-    libnotify
-    # Navigation
-    swayr
-    # Locking / idle
-    swaylock
-    swayidle
-    # Screenshots
-    grim
-    slurp
-    # Clipboard
-    wl-clipboard
-    cliphist
-
-    (python3.withPackages (ps: with ps; [ i3ipc ]))
-  ];
 }

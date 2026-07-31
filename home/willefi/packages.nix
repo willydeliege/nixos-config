@@ -2,14 +2,15 @@
 {
 
   home.packages = with pkgs; [
-    neovim
-    libreoffice-qt6-fresh
-    unzip
-    imagemagick
     ghostscript
+    imagemagick
+    libreoffice-qt6-fresh
+    neovim
     mermaid-cli
     tectonic
     ungoogled-chromium
+    unzip
+    wttrbar
   ];
   programs.chromium = {
     enable = true;
