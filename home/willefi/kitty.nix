@@ -8,7 +8,10 @@
       name = "FiraCode Nerd Font";
       size = 13;
     };
-
+    keybindings = {
+      "kitty_mod+/" =
+        "launch --allow-remote-control kitty +kitten kitty_search/search.py @active-kitty-window-id";
+    };
     settings = {
       # Configuration de la fenêtre et de l'environnement
       background_opacity = "0.95";
