@@ -59,11 +59,12 @@
       cl = "clear";
       md = "mkdir -p";
       up = "sudo nixos-rebuild switch --flake .#nixos";
+      zshrc = "source ~/.config/zsh/.zshrc";
     };
 
     initContent = ''
       # plugins
-      # source ${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.plugin.zsh
+      source ${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.plugin.zsh
       # Bindings historysubstringsearch
       bindkey '^P' history-substring-search-up
       bindkey '^N' history-substring-search-down
@@ -118,6 +119,7 @@
     ];
     git = true;
     icons = "auto";
+
   };
   programs.freetube = {
     enable = true;
