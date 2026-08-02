@@ -1,0 +1,59 @@
+# Auth with polkit-gnome:
+# managed by nixos
+# exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+
+exec --no-startup-id ${pkgs.gnome-keyring}/bin/gnome-keyring-daemon --start --components=secrets
+
+# Import environment variables for user systemd service manager
+exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
+
+# Update dbus environments with display variables
+exec hash dbus-update-activation-environment 2>/dev/null && \
+    dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK NIXOS_OZONE_WL XDG_CURRENT_DESKTOP=sway QT_QPA_PLATFORMTHEME
+# usefull to start every graphical.targer s
+exec systemctl --user start sway-session.target
+# Idle n
+exec swayidle idlehint 1
+exec_always swayidle -w \
+	timeout 300 'saylock -d' \
+	timeout 600 'systemctl suspend' \
+	before-sleep 'swaylock'
+
+# Autotiling
+exec autotiling
+
+# Terminal
+# exec foot --server
+exec alacritty --daemon
+
+# cliphist
+exec wl-paste --type text --watch cliphist store
+exec wl-paste --type image --watch cliphist store
+
+# Outputs
+# Needed when multiple monitors
+# exec kanshi
+
+# nwg-drawer
+exec_always nwg-drawer -r -c 7 -is 90 -mb 10 -ml 50 -mr 50 -mt 10
+
+# swayrd for better navifation between windows and workspaces
+exec swayrd
+
+# Sway Fader
+exec python3 ~/.config/sway/scripts/swayfader.py
+
+# Visual comfort
+exec wlsunset -S 05:00 -s 19:00
+
+# Power management
+# exec_always "cat /sys/class/power_supply/AC*/online | grep -q 1 && brightnessctl set 60% || brightnessctl set 30%"
+
+# Sway Osd
+exec swayosd-server
+
+# Bluettoo
+exec blueman-applet
+
+# Network manager
+exec nm-applet

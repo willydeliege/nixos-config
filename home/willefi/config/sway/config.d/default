@@ -1,0 +1,241 @@
+### Declare variables
+set {
+    # Primary mod key.
+    # Mod4 is Meta key, Mod1 is Alt.
+    $mod Mod4
+
+    # Add Vim key support
+    $left h
+    $down j
+    $up k
+    $right l
+
+    # Default terminal emulator
+    # $term footclient
+    $term kitty
+
+    # Application launcher
+    $launcher rofi -show drun
+
+    # Power Menu
+    $powermenu ~/.config/sway/scripts/power_menu.sh
+
+    # Application menu
+    $menu nwg-drawer
+}
+
+### Key bindings
+#
+# Basics:
+#
+bindsym {
+    # Launch the terminal
+    $mod+Return exec $term #sesh connect /home/willefi/
+    # Toggle dropdown terminal
+    $mod+Shift+Return exec --no-startup-id bash /home/willefi/.config/sway/scripts/sway-scratchpad -t -mt -atc -d 60%x60% -- $term
+
+    # Open the power menu
+    Ctrl+Alt+Delete exec $powermenu
+
+    # Kill focused window
+	$mod+Backspace kill
+	$mod+q kill
+
+  # Start your launcher
+  $mod+d exec $launcher
+
+  # Switch to the last recently used window
+  Alt+Tab exec swayr switch-to-urgent-or-lru-window
+
+  # Lock screen
+  $mod+f1 exec gtklock
+
+  # Activities
+  $mod+Tab workspace next
+
+  # Activities and workspaces
+  $mod+Shift+Tab exec swayr switch-workspace-or-window
+
+  # Reload the configuration file
+  $mod+Shift+c reload
+}
+
+#
+# Moving around:
+#
+bindsym {
+    # Change window focus
+    $mod+Left focus left
+    $mod+Down focus down
+    $mod+Up focus up
+    $mod+Right focus right
+    # Vim key support
+    $mod+$left focus left
+    $mod+$down focus down
+    $mod+$up focus up
+    $mod+$right focus right
+
+    # Move the focused window
+    $mod+Shift+Left move left
+    $mod+Shift+Down move down
+    $mod+Shift+Up move up
+    $mod+Shift+Right move right
+    # Vim key support
+    $mod+Shift+$left move left
+    $mod+Shift+$down move down
+    $mod+Shift+$up move up
+    $mod+Shift+$right move right
+}
+
+#
+# Workspaces:
+#
+bindsym {
+    # Switch to workspace
+    $mod+1 workspace number 1
+    $mod+2 workspace number 2
+    $mod+3 workspace number 3
+    $mod+4 workspace number 4
+    $mod+5 workspace number 5
+    $mod+6 workspace number 6
+    $mod+7 workspace number 7
+    $mod+8 workspace number 8
+    $mod+9 workspace number 9
+    $mod+0 workspace number 10
+    # Move focused container to workspace and follow
+    $mod+Shift+1 move container to workspace number 1; workspace 1
+    $mod+Shift+2 move container to workspace number 2; workspace 2
+    $mod+Shift+3 move container to workspace number 3; workspace 3
+    $mod+Shift+4 move container to workspace number 4; workspace 4
+    $mod+Shift+5 move container to workspace number 5; workspace 5
+    $mod+Shift+6 move container to workspace number 6; workspace 6
+    $mod+Shift+7 move container to workspace number 7; workspace 7
+    $mod+Shift+8 move container to workspace number 8; workspace 8
+    $mod+Shift+9 move container to workspace number 9; workspace 9
+    $mod+Shift+0 move container to workspace number 10; workspace 10
+    # Move focused container to workspace
+    $mod+Ctrl+1 move container to workspace number 1
+    $mod+Ctrl+2 move container to workspace number 2
+    $mod+Ctrl+3 move container to workspace number 3
+    $mod+Ctrl+4 move container to workspace number 4
+    $mod+Ctrl+5 move container to workspace number 5
+    $mod+Ctrl+6 move container to workspace number 6
+    $mod+Ctrl+7 move container to workspace number 7
+    $mod+Ctrl+8 move container to workspace number 8
+    $mod+Ctrl+9 move container to workspace number 9
+    $mod+Ctrl+0 move container to workspace number 10
+}
+
+#
+# Layout stuff:
+#
+bindsym {
+    # Set how the current window will be split
+
+    # Make the current focus fullscreen
+    $mod+f fullscreen
+
+    # Toggle between tiling and floating mode
+    $mod+space floating toggle
+
+    # Swap focus between the tiling area and the floating area
+    $mod+Shift+space focus mode_toggle
+}
+
+#
+# Scratchpad:
+#
+# Sway has a "scratchpad", which is a bag of holding for windows.
+# You can send windows there and get them back later.
+
+bindsym {
+    # Move the currently focused window to the scratchpad
+    $mod+Shift+minus move scratchpad
+
+    # Show the next scratchpad window or hide the focused scratchpad window.
+    # If there are multiple scratchpad windows, this command cycles through them.
+    $mod+minus scratchpad show
+}
+
+#
+# Resizing containers:
+#
+bindsym {
+    # Resize with arrow keys
+    $mod+ctrl+Right resize shrink width 10 px
+    $mod+ctrl+Up resize grow height 10 px
+    $mod+ctrl+Down resize shrink height 10 px
+    $mod+ctrl+Left resize grow width 10 px
+    # Resize with Vim keys
+    $mod+ctrl+l resize shrink width 10 px
+    $mod+ctrl+k resize grow height 10 px
+    $mod+ctrl+j resize shrink height 10 px
+    $mod+ctrl+h resize grow width 10 px
+}
+
+# Resize floating windows with mouse scroll:
+bindsym --whole-window --border {
+    # Resize vertically
+    $mod+button4 resize shrink height 5 px or 5 ppt
+    $mod+button5 resize grow height 5 px or 5 ppt
+    # Resize horizontally
+    $mod+Shift+button4 resize shrink width 5 px or 5 ppt
+    $mod+Shift+button5 resize grow width 5 px or 5 ppt
+}
+
+# Move windows by holding down $mod and left mouse button.
+# Resize them with right mouse button + $mod.
+# Change "normal" to "inverse" to switch left and right
+floating_modifier $mod normal
+
+#
+# Media Keys
+#
+bindsym {
+    # Volume
+    XF86AudioRaiseVolume exec swayosd-client --output-volume 5
+    XF86AudioLowerVolume exec swayosd-client --output-volume -5
+    XF86AudioMute exec swayosd-client --output-volume mute-toggle
+    XF86AudioMicMute exec swayosd-client --input-volume mute-toggle
+
+    # Player
+    XF86AudioPlay exec swayosd-client --playerctl play-pause
+    XF86AudioNext exec swayosd-client --playerctl next
+    XF86AudioPrev exec swayosd-client --playerctl prev
+
+    # Backlight
+    XF86MonBrightnessUp exec swayosd-client --brightness +5
+    XF86MonBrightnessDown exec swayosd-client --brightness -5
+}
+
+#
+# App shortcuts
+#
+bindsym {
+    # Launch the file explorer
+    $mod+e exec thunar
+    # Launch the browser
+    $mod+b exec chromium
+    # Launch the chromium in private mode
+    $mod++Shift+b exec chromium --incognito
+    # Select a window
+    $mod+Shift+a exec rofi -show window
+    # Launch the clipboard manager
+    $mod+Ctrl+v exec cliphist list | rofi -dmenu --width 90 -lines 30 -p "Select an entry to copy it to your clipboard buffer:"| cliphist decode | wl-copy
+    # Delete an entry from the clipboard manager
+    $mod+Ctrl+x exec cliphist list | rofi -dmenu -width 90 -lines 30 -t cc9393ff -S cc9393ff -p "Select an entry to delete it from cliphist:"| cliphist delete
+    # Note: you can clear all cliphist entries by running `cliphist wipe`
+}
+
+#
+# Screenshots
+#
+bindsym {
+    # Snip a selection and pipe to swappy
+    print exec grim -g "$(slurp)" - | swappy -f -
+    # Screenshot a window and pipe to swappy
+    Ctrl+Print exec ~/.config/sway/scripts/screenshot_window.sh
+    # Screenshot the current display and pipe to swappy
+    Shift+Print exec ~/.config/sway/scripts/screenshot_display.sh
+}
+

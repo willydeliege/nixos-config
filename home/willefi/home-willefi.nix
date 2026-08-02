@@ -12,6 +12,7 @@
     ./tmux.nix
     ./kitty.nix
     ./git.nix
+    ./sway.nix
   ];
   home.shell.enableZshIntegration = true;
   programs.fzf.enable = true;
