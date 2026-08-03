@@ -16,7 +16,7 @@
   nix.gc = {
     automatic = true;
     dates = "weekly";
-    options = "--delete-older-than +5";
+    options = "--delete-older-than 5d";
   };
   nix.settings.auto-optimise-store = true; # Fusionne les fichiers identiques pour gagner de la place
 
