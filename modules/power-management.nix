@@ -26,6 +26,7 @@
       # Intel P-state energy/performance policy
       CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
       CPU_ENERGY_PERF_POLICY_ON_BAT = "balance_power";
+      CPU_ENERGY_PERF_POLICY_ON_SAV = "power";
 
       # Turbo Boost
       CPU_BOOST_ON_AC = 1;
@@ -36,6 +37,8 @@
       CPU_MAX_PERF_ON_AC = 100;
       CPU_MIN_PERF_ON_BAT = 0;
       CPU_MAX_PERF_ON_BAT = 60;
+      CPU_MIN_PERF_ON_SAV = 0;
+      CPU_MAX_PERF_ON_SAV = 30;
 
       # PCIe Active State Power Management
       PCIE_ASPM_ON_AC = "performance";
