@@ -2,7 +2,7 @@
 # managed by nixos
 # exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
-exec --no-startup-id ${pkgs.gnome-keyring}/bin/gnome-keyring-daemon --start --components=secrets
+# exec --no-startup-id ${pkgs.gnome-keyring}/bin/gnome-keyring-daemon --start --components=secrets
 
 # Import environment variables for user systemd service manager
 exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
@@ -21,10 +21,6 @@ exec_always swayidle -w \
 
 # Autotiling
 exec autotiling
-
-# Terminal
-# exec foot --server
-exec alacritty --daemon
 
 # cliphist
 exec wl-paste --type text --watch cliphist store
@@ -46,13 +42,10 @@ exec python3 ~/.config/sway/scripts/swayfader.py
 # Visual comfort
 exec wlsunset -S 05:00 -s 19:00
 
-# Power management
-# exec_always "cat /sys/class/power_supply/AC*/online | grep -q 1 && brightnessctl set 60% || brightnessctl set 30%"
-
 # Sway Osd
 exec swayosd-server
 
-# Bluettoo
+# Bluetooth
 exec blueman-applet
 
 # Network manager

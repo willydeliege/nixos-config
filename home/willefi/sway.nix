@@ -1,8 +1,9 @@
-{ pkgs, config, ... }:
+{ config, ... }:
 {
 
   # wayland.windowManager.sway = {
-  #   enable = true;
+  #   enable = false;
+  #   config.terminal = "kitty";
   # };
   xdg.configFile."sway".source =
     config.lib.file.mkOutOfStoreSymlink /home/willefi/nixos-config/home/willefi/config/sway;
