@@ -215,9 +215,9 @@ bindsym {
     # Launch the file explorer
     $mod+e exec thunar
     # Launch the browser
-    $mod+b exec chromium
+    $mod+b exec brave
     # Launch the chromium in private mode
-    $mod++Shift+b exec chromium --incognito
+    $mod++Shift+b exec brave --incognito
     # Select a window
     $mod+Shift+a exec rofi -show window
     # Launch the clipboard manager
