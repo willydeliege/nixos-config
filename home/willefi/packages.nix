@@ -3,6 +3,7 @@
 
   home.packages = with pkgs; [
     ungoogled-chromium
+    chafa
     ghostscript
     imagemagick
     libreoffice-qt6-fresh
