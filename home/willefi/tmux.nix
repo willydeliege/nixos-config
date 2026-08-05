@@ -18,6 +18,8 @@
       tmux-fzf
     ];
 
+    # disable tmuxp
+    tmuxp.enable = false;
     # Tout le reste de tes configurations spécifiques, styles et keybindings
     extraConfig = ''
       # Automatically renumber windows when one is closed
