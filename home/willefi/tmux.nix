@@ -23,6 +23,9 @@
       # Automatically renumber windows when one is closed
       set -g renumber-windows on
 
+      # tmux true color for kitty
+      set -as terminal-overrides ",xterm-kitty:Tc"
+      set -as terminal-overrides ",xterm-kitty:Styl"
       # Fix nvim lags & colors
       set -ag terminal-overrides ",xterm-256color:RGB"
       set-option -g focus-events on
