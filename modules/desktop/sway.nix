@@ -45,7 +45,11 @@
       wl-clipboard
       cliphist
 
-      (python3.withPackages (ps: with ps; [ i3ipc ]))
+      (python3.withPackages (
+        ps: with ps; [
+          i3ipc
+        ]
+      ))
     ];
     # Enables GTK integration (portals, environment variables, etc.)
     wrapperFeatures.gtk = true;
