@@ -7,5 +7,7 @@
     config.lib.file.mkOutOfStoreSymlink /home/willefi/nixos-config/home/willefi/config/swaync;
   xdg.configFile."waybar".source =
     config.lib.file.mkOutOfStoreSymlink /home/willefi/nixos-config/home/willefi/config/waybar;
+  xdg.configFile."sesh".source =
+    config.lib.file.mkOutOfStoreSymlink /home/willefi/nixos-config/home/willefi/config/sesh;
 
 }

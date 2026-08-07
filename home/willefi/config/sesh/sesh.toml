@@ -1,0 +1,24 @@
+#:schema https://github.com/joshmedeski/sesh/raw/main/sesh.schema.json
+cache = false
+sort_order = [
+  "config",
+  "tmux",
+  "zoxide", # show last
+]
+[[session]]
+name = "Pkm"
+path = "~/Documents/MyPkm/"
+startup_command = "nvim -c ':Obsidian today'"
+
+[[session]]
+name = "Nvim config"
+path = "/home/willefi/.config/nvim"
+startup_command = "nvim"
+
+[[wildcard]]
+pattern = "/home/willefi/dotfiles/**"
+startup_command = "nvim"
+
+[[wildcard]]
+pattern = "/home/willefi/.config/**"
+startup_command = "nvim"
