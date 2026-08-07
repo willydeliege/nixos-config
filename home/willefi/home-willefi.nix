@@ -64,6 +64,8 @@
     };
 
     initContent = ''
+      # disable beep
+      unsetopt BEEP
       # plugins
       source ${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.plugin.zsh
       # Bindings historysubstringsearch
