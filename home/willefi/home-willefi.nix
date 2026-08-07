@@ -12,6 +12,7 @@
     ./tmux.nix
     ./kitty.nix
     ./git.nix
+    ./browser.nix
     ./dotfiles.nix
   ];
   home.shell.enableZshIntegration = true;
