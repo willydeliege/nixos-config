@@ -5,6 +5,10 @@
   programs.fzf.keybindings = true;
   users.defaultUserShell = pkgs.zsh;
   environment.shells = [ pkgs.zsh ];
+  programs.nix-index = {
+    enable = true;
+    enableZshIntegration = true;
+  };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users."willefi" = {
@@ -42,7 +46,6 @@
     sesh
     btop
   ];
-  programs.zoxide.enable = true;
   programs.tmux.enable = true;
   security.wrappers.btop = {
     owner = "root";
@@ -50,4 +53,5 @@
     capabilities = "cap_perfmon+ep";
     source = "${pkgs.btop}/bin/btop";
   };
+  programs.zoxide.enable = true;
 }
