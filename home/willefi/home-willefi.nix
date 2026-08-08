@@ -16,45 +16,22 @@
     ./dotfiles.nix
   ];
   home.shell.enableZshIntegration = true;
-  programs.fzf.enable = true;
   programs.zsh = {
     enable = true;
-    # enableCompletion = true;
+    defaultKeymap = "emacs";
+    enableCompletion = true;
     autosuggestion.enable = true;
     fastSyntaxHighlighting.enable = true;
+    historySubstringSearch = {
+      enable = true;
+      searchDownKey = [
+        "^N"
+      ];
+      searchUpKey = [
+        "^P"
+      ];
+    };
     dotDir = "/home/willefi/.config/zsh";
-
-    plugins = [
-      {
-        name = "zsh-history-substring-search";
-        src = pkgs.zsh-history-substring-search;
-        file = "share/zsh-history-substring-search/zsh-history-substring-search.zsh";
-      }
-      {
-        name = "fzf-tab";
-        src = pkgs.fetchFromGitHub {
-          owner = "Aloxaf";
-          repo = "fzf-tab";
-          rev = "master";
-          sha256 = "sha256-YhTSu0P7mFlVx1zBvbT0jNstkamcZHhPYJHKMAHgyuM=";
-        };
-        file = "fzf-tab.plugin.zsh";
-      }
-      {
-        name = "fzf-tab-source";
-        src = pkgs.fetchFromGitHub {
-          owner = "Freed-Wu";
-          repo = "fzf-tab-source";
-          # Use the latest commit hash or release tag
-          rev = "master";
-          # Replace this with the actual sha256 hash or leave it empty
-          # to let Nix complain and provide the correct hash
-          sha256 = "sha256-d7+yKrHp4Vcl5WlQfQ/UMNK5j3wz8Ls168Cuj1LYTgI=";
-        };
-        # Sourcing the main entry point plugin script
-        file = "fzf-tab-source.plugin.zsh";
-      }
-    ];
 
     shellAliases = {
       cat = "bat";
@@ -65,19 +42,29 @@
     };
 
     initContent = ''
+
+      source ${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.plugin.zsh
+      # disable sort when completing `git checkout`
+      zstyle ':completion:*:git-checkout:*' sort false
+      # set descriptions format to enable group support
+      # NOTE: don't use escape sequences (like '%F{red}%d%f') here, fzf-tab will ignore them
+      zstyle ':completion:*:descriptions' format '[%d]'
+      # set list-colors to enable filename colorizing
+      zstyle ':completion:*' list-colors ''${(s.:.)LS_COLORS}
+      # force zsh not to show completion menu, which allows fzf-tab to capture the unambiguous prefix
+      zstyle ':completion:*' menu no
+      # preview directory's content with eza when completing cd
+      zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
+      # custom fzf flags
+      # NOTE: fzf-tab does not follow FZF_DEFAULT_OPTS by default
+      zstyle ':fzf-tab:*' fzf-flags --color=fg:1,fg+:2 --bind=tab:accept
+      # switch group using `<` and `>`
+      zstyle ':fzf-tab:*' switch-group '<' '>'
+
+
+
       # disable beep
       unsetopt BEEP
-      # plugins
-      source ${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.plugin.zsh
-      # Bindings historysubstringsearch
-      bindkey '^P' history-substring-search-up
-      bindkey '^N' history-substring-search-down
-
-      # Config fzf-tab
-      zstyle ':completion:*:git-checkout:*' sort false
-      zstyle ':completion:*:descriptions' format '[%d]'
-      zstyle ':completion:*' menu no
-      zstyle ':fzf-tab:*' switch-group ',' '.'
       # sesh
       function sesh-sessions() {
         {
