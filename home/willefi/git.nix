@@ -1,10 +1,42 @@
 { pkgs, ... }:
 {
+  programs.git = {
+    enable = true;
+    # Global Git ignore rules
+    ignores = [
+      "*.swp"
+      ".DS_Store"
+    ];
+
+    settings = {
+      user = {
+        name = "Frédéric Willem";
+        email = "frederic.willem@gmail.com";
+      };
+      # Convenient Git aliases
+      aliases = {
+        co = "checkout";
+        ci = "commit";
+        st = "status";
+        br = "branch";
+      };
+      # Advanced or nested Git configurations
+      extraConfig = {
+        pull = {
+          rebase = true;
+        };
+      };
+    };
+
+    userEmail = "frederic.willem@gmail.com";
+
+  };
+
   programs.lazygit = {
     enable = true;
     settings = {
-      git.pagers = [
-        { pager = "delta --dark --paging=never"; }
+      git.diffRenderers = [
+        { command = "delta --dark --paging=never"; }
       ];
       gui = {
         theme = {
@@ -21,10 +53,6 @@
         };
       };
     };
-  };
-
-  programs.git = {
-    enable = true;
   };
 
   # Git diff pager
@@ -44,7 +72,15 @@
     settings = {
       editor = "nvim";
     };
+    gitCredentialHelper = {
+      enable = true;
+      hosts = [
+        "https://github.com"
+        "https://gist.github.com"
+      ];
+    };
   };
+
   services.kdeconnect = {
     enable = true;
     indicator = true;
