@@ -84,6 +84,15 @@
       bindkey -M viins '\es' sesh-sessions
     '';
   };
+
+  programs.fzf = {
+    enable = true;
+    enableZshIntegration = true;
+    defaultOptions = [
+      "--reverse"
+      "--style=full"
+    ];
+  };
   programs.starship = {
     enable = true;
 
