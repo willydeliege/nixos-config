@@ -14,17 +14,14 @@
         email = "frederic.willem@gmail.com";
       };
       # Convenient Git aliases
-      aliases = {
+      alias = {
         co = "checkout";
         ci = "commit";
         st = "status";
         br = "branch";
       };
-      # Advanced or nested Git configurations
-      extraConfig = {
-        pull = {
-          rebase = true;
-        };
+      pull = {
+        rebase = true;
       };
     };
   };
