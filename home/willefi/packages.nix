@@ -15,6 +15,10 @@
   ];
   programs.btop.enable = true;
   programs.calibre.enable = true;
+  services.kdeconnect = {
+    enable = true;
+    indicator = true;
+  };
   programs.freetube = {
     enable = true;
     settings = {

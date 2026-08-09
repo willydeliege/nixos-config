@@ -27,9 +27,6 @@
         };
       };
     };
-
-    userEmail = "frederic.willem@gmail.com";
-
   };
 
   programs.lazygit = {
