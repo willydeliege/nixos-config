@@ -43,6 +43,7 @@
 
     initContent = ''
 
+      # Fuzzy finding completions
       source ${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.plugin.zsh
       # disable sort when completing `git checkout`
       zstyle ':completion:*:git-checkout:*' sort false
@@ -61,10 +62,9 @@
       # switch group using `<` and `>`
       zstyle ':fzf-tab:*' switch-group '<' '>'
 
-
-
       # disable beep
       unsetopt BEEP
+
       # sesh
       function sesh-sessions() {
         {
@@ -77,7 +77,6 @@
           sesh connect $session
         }
       }
-
       zle -N sesh-sessions
       bindkey -M emacs '\es' sesh-sessions
       bindkey -M vicmd '\es' sesh-sessions
