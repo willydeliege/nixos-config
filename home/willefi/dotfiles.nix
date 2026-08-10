@@ -9,5 +9,7 @@
     config.lib.file.mkOutOfStoreSymlink /home/willefi/nixos-config/home/willefi/config/waybar;
   xdg.configFile."sesh".source =
     config.lib.file.mkOutOfStoreSymlink /home/willefi/nixos-config/home/willefi/config/sesh;
+  xdg.configFile."nvim".source =
+    config.lib.file.mkOutOfStoreSymlink /home/willefi/nixos-config/home/willefi/config/nvim;
 
 }
