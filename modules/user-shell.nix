@@ -20,6 +20,7 @@
       "audio"
       "video"
       "input"
+      "nordvpn"
     ];
     packages = with pkgs; [
       #  thunderbird

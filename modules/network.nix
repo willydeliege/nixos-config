@@ -25,15 +25,24 @@
       };
     };
   };
+  # Install the NordVPN CLI client
+  environment.systemPackages = [ pkgs.nordvpn ];
+  services.nordvpn.enable = true;
 
   networking.firewall = {
     enable = true;
+    checkReversePath = false;
     allowedTCPPorts = [
+      # needed for nordvpn
+      443
       # needed by calibre to connect
       8080
       9090
     ];
     allowedUDPPorts = [
+      # needed by nordvpn
+      1194
+      51820
       # needed by calibre for discovery
       54982
       48123
