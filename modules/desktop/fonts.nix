@@ -9,11 +9,13 @@
 
       # Standard Fonts
       fira-code
-      jetbrains-mono
+      # NOTE: broken
+      # jetbrains-mono
 
       # Emoji & Symbols
       noto-fonts-color-emoji
       symbola
+      font-awesome
     ];
 
     # Configure fontconfig fallbacks so missing glyphs are automatically found
