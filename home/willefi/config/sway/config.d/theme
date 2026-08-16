@@ -9,7 +9,7 @@ gaps outer 2
 default_border pixel 2
 
 # Default Font
-font pango:JetBrainsMono 12
+font pango:JetBrainsMonoNerdFont 12
 
 # Thin borders:
 smart_borders on
