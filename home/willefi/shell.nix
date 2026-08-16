@@ -27,6 +27,7 @@
       cl = "clear";
       md = "mkdir -p";
       rmf = "rm -rf";
+      df = "df -h";
       up = "sudo nixos-rebuild switch --flake .#nixos";
       zshrc = "source ~/.config/zsh/.zshrc";
     };
