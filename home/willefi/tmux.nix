@@ -26,6 +26,8 @@
       set -g renumber-windows on
 
       # tmux true color for kitty
+      set -g default-terminal "tmux-256color"
+      set -as terminal-features ",xterm-256color:RGB"
       set -as terminal-overrides ",xterm-kitty:Tc"
       set -as terminal-overrides ",xterm-kitty:Styl"
       # Fix nvim lags & colors
