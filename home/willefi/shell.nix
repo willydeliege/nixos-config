@@ -29,6 +29,7 @@
       rmf = "rm -rf";
       df = "df -h";
       up = "sudo nixos-rebuild switch --flake .#nixos";
+      cg = "tmuxinator start nixos";
       zshrc = "source ~/.config/zsh/.zshrc";
     };
 
@@ -62,7 +63,7 @@
           exec </dev/tty
           exec <&1
           local session
-          session=$(sesh list -t -c -z --hide-duplicates | fzf --height 40% --reverse --border-label ' sesh ' --border --prompt '⚡  ')
+          session=$(sesh list -T -t -c -z --hide-duplicates | fzf --height 40% --reverse --border-label ' sesh ' --border --prompt '⚡  ')
           zle reset-prompt >/dev/null 2>&1 || true
           [[ -z "$session" ]] && return
           sesh connect $session

@@ -118,5 +118,33 @@
           --preview 'sesh preview {}' \
       )\""
     '';
+    tmuxinator = {
+      enable = true;
+      projects = {
+        nixos = {
+          project_name = "Nixos";
+          root = "~/nixos-config/";
+          windows = [
+            {
+              editor = {
+                layout = "584d,173x45,0,0{103x45,0,0,2,69x45,104,0,3}";
+                panes = [
+                  "nvim"
+                  "clear"
+                ];
+              };
+            }
+          ];
+        };
+      };
+    };
+
+    # name: nixos
+    # root: ~/nixos-config/
+    #
+    # windows:
+    #   - config:
+    #       layout: 584d,173x45,0,0{103x45,0,0,2,69x45,104,0,3}
+    #     panes:
   };
 }
