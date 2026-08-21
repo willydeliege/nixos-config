@@ -51,7 +51,7 @@
       # custom fzf flags
       # NOTE: fzf-tab does not follow FZF_DEFAULT_OPTS by default
       zstyle ':fzf-tab:*' use-fzf-default-opts yes
-      zstyle ':fzf-tab:*' fzf-flags --color=fg:1,fg+:2 --bind=tab:accept
+      zstyle ':fzf-tab:*' fzf-flags --color=fg:1,fg+:2
       # switch group using `<` and `>`
       zstyle ':fzf-tab:*' switch-group '<' '>'
 
@@ -82,7 +82,6 @@
     enableZshIntegration = true;
     defaultOptions = [
       "--reverse"
-      "--style=full"
     ];
   };
   programs.starship = {
