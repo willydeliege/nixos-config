@@ -6,7 +6,7 @@
     chafa
     ghostscript
     imagemagick
-    libreoffice-qt6-fresh
+    libreoffice
     neovim
     mermaid-cli
     tectonic
