@@ -14,6 +14,7 @@
     ./packages.nix
     ./tmux.nix
     ./kitty.nix
+    ./foot.nix
     ./git.nix
     ./browser.nix
     ./dotfiles.nix
