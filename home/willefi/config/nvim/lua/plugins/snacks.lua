@@ -663,7 +663,7 @@ return {
   },
   {
     "folke/todo-comments.nvim",
-    event = "BufEnter",
+    event = "VeryLazy",
     keys = {
       {
         "<leader>st",
