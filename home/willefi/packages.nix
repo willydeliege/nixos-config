@@ -2,7 +2,6 @@
 {
 
   home.packages = with pkgs; [
-    ungoogled-chromium
     chafa
     ghostscript
     imagemagick
