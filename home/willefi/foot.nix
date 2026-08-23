@@ -1,6 +1,8 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   programs.foot = {
     enable = true;
+    server.enable = true;
     # L'intégration du shell (zsh) est activée par défaut avec le module foot de Home Manager
     settings = {
       main = {
@@ -8,16 +10,11 @@
         font = "FiraCode Nerd Font:size=13";
         # Opacité de 95% calculée en hexadécimal (0.95 * 255 = 242 -> f2)
         # Format ARGB : f2 (alpha) + 000000 (noir)
-        background = "f2000000";
+      };
+
+      colors-dark = {
+        background = "000000";
         foreground = "ffffff";
-      };
-
-      keybindings = {
-        # Raccourci natif de recherche dans l'historique de Foot
-        "search-start" = "Control+Shift+slash";
-      };
-
-      colors = {
         # Couleurs normales (ansi)
         regular0 = "7a828e"; # black
         regular1 = "ff9492"; # red
