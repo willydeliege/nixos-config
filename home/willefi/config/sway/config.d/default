@@ -11,8 +11,8 @@ set {
     $right l
 
     # Default terminal emulator
-    $term footclient
-    # $term kitty
+    # $term footclient
+    $term kitty
 
     # Application launcher
     $launcher rofi -show drun
@@ -196,7 +196,8 @@ bindsym {
     XF86AudioRaiseVolume exec swayosd-client --output-volume 5
     XF86AudioLowerVolume exec swayosd-client --output-volume -5
     XF86AudioMute exec swayosd-client --output-volume mute-toggle
-    XF86AudioMicMute exec swayosd-client --input-volume mute-toggle
+    # swayosd-client --input-volume mute-toggle alone does not toggle microphone
+    XF86AudioMicMute exec wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle && swayosd-client --input-volume 0
 
     # Player
     XF86AudioPlay exec swayosd-client --playerctl play-pause
@@ -204,7 +205,7 @@ bindsym {
     XF86AudioPrev exec swayosd-client --playerctl prev
 
     # Backlight
-    XF86MonBrightnessUp exec swayosd-client --brightness +5
+    XF86MonBrightnessUp   exec swayosd-client --brightness +5
     XF86MonBrightnessDown exec swayosd-client --brightness -5
 }
 

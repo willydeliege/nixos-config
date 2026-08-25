@@ -12,6 +12,7 @@
     unzip
     wttrbar
   ];
+  services.swayosd.enable = true;
   programs.btop.enable = true;
   programs.calibre.enable = true;
   services.kdeconnect = {

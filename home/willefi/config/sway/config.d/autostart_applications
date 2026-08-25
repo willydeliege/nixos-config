@@ -43,7 +43,7 @@ exec python3 ~/.config/sway/scripts/swayfader.py
 exec wlsunset -S 05:00 -s 19:00
 
 # Sway Osd
-exec swayosd-server
+# exec swayosd-server
 
 # Bluetooth
 exec blueman-applet
