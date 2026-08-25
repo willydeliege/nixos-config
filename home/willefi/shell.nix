@@ -28,9 +28,10 @@
       md = "mkdir -p";
       rmf = "rm -rf";
       df = "df -h";
-      up = "sudo nixos-rebuild switch --flake .#nixos";
       cg = "tmuxinator start nixos";
       zshrc = "source ~/.config/zsh/.zshrc";
+      # add name to generation
+      nix-switch = "sudo NIXOS_LABEL=\"\$(date +'%Y%m%d-%H%M')-git-\$(git -C ~/nixos-config rev-parse --short HEAD 2>/dev/null || echo 'none')\" nixos-rebuild switch --flake ~/nixos-config#nixos";
     };
 
     initContent = ''
