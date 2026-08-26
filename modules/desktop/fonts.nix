@@ -7,6 +7,9 @@
       nerd-fonts.fira-code
       nerd-fonts.jetbrains-mono
 
+      # Normal fonts
+      fira-code
+      jetbrains-mono
       # Emoji & Symbols
       noto-fonts-color-emoji
       symbola
