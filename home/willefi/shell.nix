@@ -24,57 +24,75 @@
 
     shellAliases = {
       cat = "bat";
-      cl = "clear";
-      md = "mkdir -p";
-      rmf = "rm -rf";
-      df = "df -h";
       cg = "tmuxinator start nixos";
+      cl = "clear";
+      df = "df -h";
+      md = "mkdir -p";
+      pgrep = "pgrep -a";
+      pkill = "pkill -c";
+      rmf = "rm -rf";
+      cp = "cp -iv";
       zshrc = "source ~/.config/zsh/.zshrc";
-      # add name to generation
-      nix-switch = "sudo NIXOS_LABEL=\"\$(date +'%Y%m%d-%H%M')-git-\$(git -C ~/nixos-config rev-parse --short HEAD 2>/dev/null || echo 'none')\" nixos-rebuild switch --flake ~/nixos-config#nixos";
     };
 
     initContent = ''
 
-      # Fuzzy finding completions
-      source ${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.plugin.zsh
-      # disable sort when completing `git checkout`
-      zstyle ':completion:*:git-checkout:*' sort false
-      # set descriptions format to enable group support
-      # NOTE: don't use escape sequences (like '%F{red}%d%f') here, fzf-tab will ignore them
-      zstyle ':completion:*:descriptions' format '[%d]'
-      # set list-colors to enable filename colorizing
-      zstyle ':completion:*' list-colors ''${(s.:.)LS_COLORS}
-      # force zsh not to show completion menu, which allows fzf-tab to capture the unambiguous prefix
-      zstyle ':completion:*' menu no
-      # preview directory's content with eza when completing cd
-      zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
-      # custom fzf flags
-      # NOTE: fzf-tab does not follow FZF_DEFAULT_OPTS by default
-      zstyle ':fzf-tab:*' use-fzf-default-opts yes
-      zstyle ':fzf-tab:*' fzf-flags --color=fg:1,fg+:2
-      # switch group using `<` and `>`
-      zstyle ':fzf-tab:*' switch-group '<' '>'
+       # Fuzzy finding completions
+       source ${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.plugin.zsh
+       # disable sort when completing `git checkout`
+       zstyle ':completion:*:git-checkout:*' sort false
+       # set descriptions format to enable group support
+       # NOTE: don't use escape sequences (like '%F{red}%d%f') here, fzf-tab will ignore them
+       zstyle ':completion:*:descriptions' format '[%d]'
+       # set list-colors to enable filename colorizing
+       zstyle ':completion:*' list-colors ''${(s.:.)LS_COLORS}
+       # force zsh not to show completion menu, which allows fzf-tab to capture the unambiguous prefix
+       zstyle ':completion:*' menu no
+       # preview directory's content with eza when completing cd
+       zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
+       # custom fzf flags
+       # NOTE: fzf-tab does not follow FZF_DEFAULT_OPTS by default
+       zstyle ':fzf-tab:*' use-fzf-default-opts yes
+       zstyle ':fzf-tab:*' fzf-flags --color=fg:1,fg+:2
+       # switch group using `<` and `>`
+       zstyle ':fzf-tab:*' switch-group '<' '>'
 
-      # disable beep
-      unsetopt BEEP
+       # disable beep
+       unsetopt BEEP
 
-      # sesh
-      function sesh-sessions() {
-        {
-          exec </dev/tty
-          exec <&1
-          local session
-          session=$(sesh list -T -t -c -z --hide-duplicates | fzf --height 40% --reverse --border-label ' sesh ' --border --prompt '⚡  ')
-          zle reset-prompt >/dev/null 2>&1 || true
-          [[ -z "$session" ]] && return
-          sesh connect $session
-        }
+       # sesh
+       function sesh-sessions() {
+         {
+           exec </dev/tty
+           exec <&1
+           local session
+           session=$(sesh list -T -t -c -z --hide-duplicates | fzf --height 40% --reverse --border-label ' sesh ' --border --prompt '⚡  ')
+           zle reset-prompt >/dev/null 2>&1 || true
+           [[ -z "$session" ]] && return
+           sesh connect $session
+         }
+       }
+       zle -N sesh-sessions
+       # add name to generation
+       nix-switch() {
+        local date hash subject label
+
+        date="$(date +'%Y%m%d-%H%M')"
+        hash="$(git -C ~/nixos-config rev-parse --short HEAD 2>/dev/null || echo 'none')"
+        subject="$(git -C ~/nixos-config log -1 --pretty=%s 2>/dev/null | cut -c1-40 || echo 'no-commit')"
+
+        subject="''${subject// /-}"
+        subject="''${subject//[^a-zA-Z0-9._-]/}"
+
+        label="''${date}-git-''${hash}-''${subject}"
+
+        sudo NIXOS_LABEL="$label" nixos-rebuild switch \
+           --flake ~/nixos-config#nixos \
+           --impure
       }
-      zle -N sesh-sessions
-      bindkey -M emacs '\es' sesh-sessions
-      bindkey -M vicmd '\es' sesh-sessions
-      bindkey -M viins '\es' sesh-sessions
+       bindkey -M emacs '\es' sesh-sessions
+       bindkey -M vicmd '\es' sesh-sessions
+       bindkey -M viins '\es' sesh-sessions
     '';
   };
 

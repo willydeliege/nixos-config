@@ -31,7 +31,7 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-
+  system.nixos.label = builtins.getEnv "NIXOS_LABEL";
   # Do not touch
   system.stateVersion = "26.05";
 
