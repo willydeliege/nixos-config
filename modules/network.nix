@@ -33,6 +33,8 @@
     enable = true;
     checkReversePath = false;
     allowedTCPPorts = [
+      22
+      80
       # needed for nordvpn
       443
       # needed by calibre to connect
@@ -40,6 +42,8 @@
       9090
     ];
     allowedUDPPorts = [
+      53
+      5353
       # needed by nordvpn
       1194
       51820
