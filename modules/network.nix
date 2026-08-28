@@ -42,6 +42,7 @@
       9090
     ];
     allowedUDPPorts = [
+      # Chromecast
       53
       5353
       # needed by nordvpn
