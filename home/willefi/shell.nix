@@ -36,7 +36,9 @@
     };
 
     initContent = ''
-
+       # Better kill word
+       autoload -U select-word-style
+       select-word-style bash
        # Fuzzy finding completions
        source ${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.plugin.zsh
        # disable sort when completing `git checkout`
