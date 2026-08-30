@@ -27,7 +27,6 @@
       # Launcher
       rofi
       # Status bar
-      waybar
       # Autotiling
       autotiling
       # Notifications
@@ -55,6 +54,7 @@
     wrapperFeatures.gtk = true;
   };
 
+  programs.waybar.enable = true;
   security.polkit.enable = true;
 
   services.gnome.gnome-keyring.enable = true;
