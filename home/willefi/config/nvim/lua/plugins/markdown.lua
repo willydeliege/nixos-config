@@ -37,6 +37,7 @@ return {
       templates = {
         folder = "Templates/",
       },
+      cache = { enabled = true },
     },
     config = function(_, opts)
       local note_name = { note_id_func = require("obsidian.builtin").title_id }
