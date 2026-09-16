@@ -8,6 +8,7 @@
     libreoffice
     neovim
     mermaid-cli
+    ouch
     tectonic
     unzip
     wttrbar

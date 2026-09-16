@@ -26,7 +26,9 @@
       cat = "bat";
       cg = "tmuxinator start nixos";
       cl = "clear";
+      compress = "ouch compress";
       df = "df -h";
+      extract = "ouch decompress";
       md = "mkdir -p";
       pgrep = "pgrep -a";
       pkill = "pkill -c";
