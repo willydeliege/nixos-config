@@ -27,6 +27,7 @@
   };
   # Install the NordVPN CLI client
   environment.systemPackages = [ pkgs.nordvpn ];
+  programs.gnupg.agent.enable = true;
   services.nordvpn.enable = true;
 
   networking.firewall = {
