@@ -34,6 +34,15 @@ autocmd("BufReadPost", {
 })
 
 -- ---------------------------------------------------------------------------
+-- Make bash scripts executables
+-- ---------------------------------------------------------------------------
+
+vim.api.nvim_create_autocmd("BufWritePost", {
+  pattern = "*.sh",
+  command = "silent !chmod +x <afile>",
+})
+
+-- ---------------------------------------------------------------------------
 -- Resize splits when the terminal window is resized
 -- ---------------------------------------------------------------------------
 autocmd("VimResized", {
