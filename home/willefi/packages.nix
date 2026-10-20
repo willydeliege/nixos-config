@@ -6,6 +6,7 @@
     chafa
     ghostscript
     imagemagick
+    kdePackages.dolphin
     libreoffice
     neovim
     mermaid-cli

@@ -214,7 +214,7 @@ bindsym {
 #
 bindsym {
     # Launch the file explorer
-    $mod+e exec thunar
+    $mod+e exec dolphin
     # Launch the browser
     $mod+b exec brave
     # Launch the chromium in private mode
