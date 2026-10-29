@@ -93,8 +93,8 @@
 
         sudo NIXOS_LABEL="$label" nixos-rebuild switch \
            --flake ~/nixos-config#nixos \
-           --verbose
-           --print-build-logs
+           --verbose \
+           --print-build-logs \
            --impure
       }
        bindkey -M emacs '\es' sesh-sessions
