@@ -46,6 +46,14 @@
     zellij
     sesh
     btop
+    # emacs related
+    cmake
+    gnumake
+    go-grip
+    graphviz
+    pandoc
+    shfmt
+    shellcheck
   ];
   programs.tmux.enable = true;
   security.wrappers.btop = {
@@ -55,4 +63,10 @@
     source = "${pkgs.btop}/bin/btop";
   };
   programs.zoxide.enable = true;
+  programs.java = {
+    enable = true;
+    # Par défaut, cela installe la version LTS actuelle (ex: openjdk 21)
+    # Vous pouvez spécifier une version précise si nécessaire (ex: pkgs.jdk21)
+    # package = pkgs.jdk;
+  };
 }

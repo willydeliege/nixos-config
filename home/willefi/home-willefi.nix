@@ -20,6 +20,7 @@
     ./dotfiles.nix
     ./shell.nix
     ./swaynotificationcenter.nix
+    ./emacs.nix
   ];
   services.udiskie = {
     enable = true;
