@@ -48,6 +48,8 @@
     btop
     # emacs related
     cmake
+    enchant
+    emacsPackages.jinx
     gnumake
     go-grip
     graphviz
