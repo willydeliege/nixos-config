@@ -216,9 +216,9 @@ bindsym {
     # Launch the file explorer
     $mod+e exec dolphin
     # Launch the browser
-    $mod+b exec brave
+    $mod+b exec vivaldi
     # Launch the chromium in private mode
-    $mod++Shift+b exec brave --incognito
+    $mod++Shift+b exec vivaldi --incognito
     # Select a window
     $mod+Shift+a exec rofi -show window
     # Launch the clipboard manager

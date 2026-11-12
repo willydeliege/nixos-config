@@ -14,6 +14,7 @@
     nil
     lua-language-server
     markdown-oxide
+    # vivaldi
     # Formatters
     stylua
     nixfmt

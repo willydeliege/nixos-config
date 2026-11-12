@@ -39,8 +39,8 @@ for_window [title="sway_config"] floating enable, resize set width 80 ppt height
 
 # Workspace assignment
 
-assign [app_id="brave"] workspace number 2
-for_window [app_id="brave"] focus
+assign [app_id="vivaldi"] workspace number 2
+for_window [app_id="vivaldi"] focus
 
 # Open app when calling
 

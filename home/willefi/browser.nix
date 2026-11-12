@@ -5,7 +5,7 @@
 {
   programs.chromium = {
     enable = true;
-    package = pkgs.brave;
+    package = pkgs.vivaldi;
     extensions = [
       { id = "nngceckbapebfimnlniiiahkandclblb"; } # bitwarden
       { id = "eimadpbcbfnmbkopoojfekhnkhdbieeh"; } # dark reader
